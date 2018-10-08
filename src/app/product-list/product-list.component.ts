@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { GetProductService } from '../core/service/products/get-product.service';
 import { Product } from '../model/product.model';
@@ -9,33 +10,42 @@ import { Product } from '../model/product.model';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+  subscription: Subscription;
   pageTitle = 'Product List';
   imageWidth = 50;
   imageMargin = 2;
+  textMessage = false;
   showImage = false;
   errorMessage: string;
   query = '';
   products: Product[];
-  _listFilter:string = '';
+  _listFilter: string = '';
   constructor(private getProducts: GetProductService) {
-
+    this.subscription = this.getProducts.getMessage().subscribe(message => {
+      if (message) {
+        this.pageTitle = 'Product List: ' + message.text;
+        this.textMessage = true;
+      } else {
+        this.pageTitle = 'Product List: ' + "";
+        this.textMessage = false;
+      }
+    });
   }
 
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
 
-  onRatingClicked(message: string): void {
-    this.pageTitle = 'Product List: ' + message;
+  clearMessage(): void {
+    this.getProducts.clearMessage();
   }
-
 
   ngOnInit(): void {
     this.getProducts.getProducts().subscribe(
       product => {
         this.products = product;
       },
-      error => this.errorMessage = <any> error
+      error => this.errorMessage = <any>error
     );
   }
 

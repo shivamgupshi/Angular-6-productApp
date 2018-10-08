@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Subject } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 
 import { Product } from '../../../model/product.model';
@@ -9,6 +9,7 @@ import { Product } from '../../../model/product.model';
   providedIn: 'root'
 })
 export class GetProductService {
+  private subject = new Subject<any>();
 
   private url = 'api/products/product.json';
 
@@ -24,12 +25,24 @@ export class GetProductService {
   }
 
 
-
   getProduct(id: number): Observable<Product | undefined> {
     return this.getProducts().pipe(
       map((products: Product[]) => products.find(p => p.productId === id))
     );
   }
+
+  sendMessage(message: string) {
+    this.subject.next({ text: message });
+  }
+
+  clearMessage() {
+    this.subject.next();
+  }
+
+  getMessage(): Observable<any> {
+    return this.subject.asObservable();
+  }
+
 
 
   private handleError(err: HttpErrorResponse) {
