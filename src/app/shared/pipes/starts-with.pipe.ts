@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../../model/product';
+
+import { Product } from '../../model/product.model';
 
 @Pipe({
   name: 'startsWith'
