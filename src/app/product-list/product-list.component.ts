@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GetProductService } from '../core/service/products/get-product.service';
+import { Product } from '../model/product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -8,13 +9,13 @@ import { GetProductService } from '../core/service/products/get-product.service'
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  pageTitle:string = 'Product List';
-  imageWidth:number = 50;
-  imageMargin:number = 2;
-  showImage:boolean = false;
-  errorMessage:string = '';
-  query: string = '';
-  products: any[] = [];
+  pageTitle = 'Product List';
+  imageWidth = 50;
+  imageMargin = 2;
+  showImage = false;
+  errorMessage: string;
+  query = '';
+  products: Product[];
   _listFilter:string = '';
   constructor(private getProducts: GetProductService) {
 
@@ -34,7 +35,7 @@ export class ProductListComponent implements OnInit {
       product => {
         this.products = product;
       },
-      error => this.errorMessage = <any>error
+      error => this.errorMessage = <any> error
     );
   }
 
