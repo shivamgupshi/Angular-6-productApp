@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating.component';
 import { AddingSpacePipe } from './shared/pipes/adding-space.pipe';
 import { StartsWithPipe } from './shared/pipes/starts-with.pipe';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,14 @@ import { StartsWithPipe } from './shared/pipes/starts-with.pipe';
     WelcomeComponent,
     StarRatingComponent,
     AddingSpacePipe,
-    StartsWithPipe
+    StartsWithPipe,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],

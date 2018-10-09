@@ -4,8 +4,10 @@ import { ProductListComponent } from '../app/product-list/product-list.component
 import { WelcomeComponent } from '../app/welcome/welcome.component';
 import { ProductDetailComponent } from '../app/product-detail/product-detail.component';
 import { ProductDetailGuard } from '../app/core/guard/product-detail.guard';
+import { RegisterUserComponent } from '../app/register-user/register-user.component';
 
 const routes: Routes = [
+  {path: 'register', component: RegisterUserComponent},
   { path: 'product', component: ProductListComponent },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'product/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
