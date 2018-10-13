@@ -9,13 +9,13 @@ import { LoginUserComponent } from '../app/login-user/login-user.component';
 import { AuthGuard } from '../app/core/guard/auth.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginUserComponent},
+  
   {path: 'register', component: RegisterUserComponent},
   { path: 'product',canActivate: [AuthGuard], component: ProductListComponent },
   { path: 'welcome', canActivate: [AuthGuard], component: WelcomeComponent },
   { path: 'product/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+ // { path: '**', redirectTo: 'login', pathMatch: 'full' },
 
 ];
 

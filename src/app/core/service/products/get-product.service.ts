@@ -11,7 +11,8 @@ import { Product } from '../../../model/product.model';
 export class GetProductService {
   private subject = new Subject<any>();
 
-  private url = 'api/products/product.json';
+  //private url = 'api/products/product.json';
+  private url = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient) { }
   getProducts(): Observable<Product[]> {
