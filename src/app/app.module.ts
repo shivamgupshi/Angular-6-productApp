@@ -15,6 +15,7 @@ import { StarRatingComponent } from './shared/components/star-rating/star-rating
 import { AddingSpacePipe } from './shared/pipes/adding-space.pipe';
 import { StartsWithPipe } from './shared/pipes/starts-with.pipe';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 //import { LoginUserComponent } from './login-user/login-user.component';
 
 
@@ -27,7 +28,8 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     StarRatingComponent,
     AddingSpacePipe,
     StartsWithPipe,
-    RegisterUserComponent
+    RegisterUserComponent,
+    ProductEditComponent
    
   ],
   imports: [

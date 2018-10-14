@@ -15,7 +15,7 @@
     </div>
     <div class='row' *ngIf='listFilter'>
       <div class='col-md-6'>
-        <h4>Filtered by: }</h4>
+        <h4>Filtered by: {{query}}}</h4>
 
       </div>
     </div>
@@ -52,6 +52,12 @@
             <td>
               <app-star-rating [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></app-star-rating>
             </td>
+            <td>
+                <a>
+                  <a [routerLink]="['/product', product.productId,'edit']">edit</a>
+                </a>
+              </td>
+  
           </tr>
         </tbody>
       </table>

@@ -7,6 +7,7 @@ import { ProductDetailGuard } from '../app/core/guard/product-detail.guard';
 import { RegisterUserComponent } from '../app/register-user/register-user.component';
 import { LoginUserComponent } from '../app/login-user/login-user.component';
 import { AuthGuard } from '../app/core/guard/auth.guard';
+import { ProductEditComponent } from '../app/product-edit/product-edit.component';
 
 const routes: Routes = [
   
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'product',canActivate: [AuthGuard], component: ProductListComponent },
   { path: 'welcome', canActivate: [AuthGuard], component: WelcomeComponent },
   { path: 'product/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
+  { path: 'product/:id/edit', canActivate: [AuthGuard] ,component: ProductEditComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
  // { path: '**', redirectTo: 'login', pathMatch: 'full' },
 

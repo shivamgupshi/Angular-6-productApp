@@ -20,9 +20,18 @@ export class GetProductService {
     return this.http.get<Product[]>(this.url).pipe(
       tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
-
-
     );
+  }
+
+  addProducts(product: Product) {
+
+    return this.http.post(`http://localhost:3000/products`, product);
+
+  }
+  updateProduct(product: Product ,id:number) {
+
+    return this.http.put(`http://localhost:3000/products/${id}`, product);
+
   }
 
 
