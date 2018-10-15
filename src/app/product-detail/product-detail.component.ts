@@ -12,8 +12,8 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router, private productService: GetProductService) {
+}
 
-  }
   product = {};
   pageTitle = '';
   errorMessage = '';
@@ -34,7 +34,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/product']);
+    this.router.navigate(['/product'], {queryParamsHandling:"preserve"});
   }
 
 }

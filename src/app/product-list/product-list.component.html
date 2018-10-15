@@ -43,7 +43,8 @@
             </td>
             <td>
               <a>
-                <a [routerLink]="['/product', product.productId]"> {{ product.productName }}</a>
+                <a [routerLink]="['/product', product.productId]"
+                [queryParams] = "{filterBy: query , showImage: showImage }"> {{ product.productName }}</a>
               </a>
             </td>
             <td>{{ product.productCode | lowercase | addingSpace:'-'}}</td>

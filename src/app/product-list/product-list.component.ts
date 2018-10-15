@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 import { GetProductService } from '../core/service/products/get-product.service';
 import { Product } from '../model/product.model';
@@ -20,7 +21,7 @@ export class ProductListComponent implements OnInit {
   query = '';
   products: Product[];
   _listFilter: string = '';
-  constructor(private getProducts: GetProductService) {
+  constructor(private getProducts: GetProductService, private route: ActivatedRoute) {
     this.subscription = this.getProducts.getMessage().subscribe(message => {
       if (message) {
         this.pageTitle = 'Product List: ' + message.text;
@@ -41,6 +42,8 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   this.query =  this.route.snapshot.queryParams['filterBy'] || '';
+   this.showImage = this.route.snapshot.queryParams['showImage'] === 'true';
     this.getProducts.getProducts().subscribe(
       product => {
         this.products = product;

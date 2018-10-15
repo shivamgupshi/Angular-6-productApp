@@ -76,6 +76,17 @@
       "starRating": 4.6,
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png",
       "id": 8
+    },
+    {
+      "productId": 54,
+      "productName": "adding product",
+      "productCode": "BH-3378",
+      "releaseDate": "March 19, 2016",
+      "description": "This is the new addition",
+      "price": 19.95,
+      "starRating": 4.6,
+      "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png",
+      "id": 9
     }
   ]
 }
