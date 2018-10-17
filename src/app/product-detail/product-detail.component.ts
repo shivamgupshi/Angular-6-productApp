@@ -19,20 +19,14 @@ export class ProductDetailComponent implements OnInit {
   errorMessage = '';
 
   ngOnInit() {
-    const param = this.route.snapshot.paramMap.get('id');
-    if (param) {
-      const id = +param;
-      this.pageTitle = `${id}`;
-      this.getProduct(id);
+    let data = this.route.snapshot.data['data'];
+    if(data){
+      this.pageTitle = data.productId;
+      this.product = this.route.snapshot.data['data'];  
     }
   }
 
-  getProduct(id: number) {
-    this.productService.getProduct(id).subscribe(
-      product => this.product = product,
-      error => this.errorMessage = <any>error);
-  }
-
+  
   onBack(): void {
     this.router.navigate(['/product'], {queryParamsHandling:"preserve"});
   }

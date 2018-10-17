@@ -16,7 +16,8 @@ import { AddingSpacePipe } from './shared/pipes/adding-space.pipe';
 import { StartsWithPipe } from './shared/pipes/starts-with.pipe';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
-//import { LoginUserComponent } from './login-user/login-user.component';
+import { ProductDetailResolver } from './product-detail/product-detail-resolve';
+
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: tokenInterceptor, multi: true },
-    fakeBackendProvider],
+    fakeBackendProvider,ProductDetailResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

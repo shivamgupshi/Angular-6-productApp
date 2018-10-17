@@ -28,6 +28,7 @@ export class GetProductService {
     return this.http.post(`http://localhost:3000/products`, product);
 
   }
+  
   updateProduct(product: Product ,id:number) {
 
     return this.http.put(`http://localhost:3000/products/${id}`, product);

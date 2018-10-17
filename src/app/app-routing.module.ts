@@ -8,16 +8,17 @@ import { RegisterUserComponent } from '../app/register-user/register-user.compon
 import { LoginUserComponent } from '../app/login-user/login-user.component';
 import { AuthGuard } from '../app/core/guard/auth.guard';
 import { ProductEditComponent } from '../app/product-edit/product-edit.component';
+import { ProductDetailResolver } from '../app/product-detail/product-detail-resolve';
 
 const routes: Routes = [
   
   {path: 'register', component: RegisterUserComponent},
   { path: 'product',canActivate: [AuthGuard], component: ProductListComponent },
   { path: 'welcome', canActivate: [AuthGuard], component: WelcomeComponent },
-  { path: 'product/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
+  { path: 'product/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent , resolve: { data: ProductDetailResolver } },
   { path: 'product/:id/edit', canActivate: [AuthGuard] ,component: ProductEditComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
- // { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 
 ];
 
